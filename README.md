@@ -27,21 +27,9 @@ annotations @ [tacodataset.org](http://tacodataset.org)
 For convenience, annotations are provided in COCO format. Check the metadata here:
 http://cocodataset.org/#format-data
 
-TACO is still relatively small, but it is growing. Stay tuned!
+For more details check their (https://pedropro.github.io/ and https://seomis.cc/) paper: https://arxiv.org/abs/2003.06975
 
-# Publications
 
-For more details check our paper: https://arxiv.org/abs/2003.06975
-
-If you use this dataset and API in a publication, please cite us using: &nbsp;
-```
-@article{taco2020,
-    title={TACO: Trash Annotations in Context for Litter Detection},
-    author={Pedro F Proença and Pedro Simões},
-    journal={arXiv preprint arXiv:2003.06975},
-    year={2020}
-}
-```
 # The Story
 So this is... a mess.
 The premise is summed to one line - 
