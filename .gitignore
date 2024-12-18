@@ -11,4 +11,9 @@
 /validate.txt
 /yolov8n.pt
 /yolov8x-cls.pt
-/__pycache__
+/__pycache_
+/.gitignore.txt
+/data/images/
+/data/train/
+/data/val/
+/data/test/
