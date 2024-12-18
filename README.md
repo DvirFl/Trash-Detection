@@ -1,3 +1,7 @@
+# Trash Collection - Detection
+
+This is a build inspired by the following Project:
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/wiki/pedropro/TACO/images/logonav.png" width="25%"/>
 </p>
@@ -38,61 +42,39 @@ If you use this dataset and API in a publication, please cite us using: &nbsp;
     year={2020}
 }
 ```
+# The Story
+So this is... a mess.
+The premise is summed to one line - 
+I want to pick up trash I see while hiking, and I want drones to help me do it so it will be faster.
 
-# News
-**December 20, 2019** - Added more 785 images and 2642 litter segmentations. <br/>
-**November 20, 2019** - TACO is officially open for new annotations: http://tacodataset.org/annotate
+Hi!
+My name is Dvir Flom and I'm learning to be a Data Scientist. By myself.
+After teaching for many years (Math, Computer Science and Physics in academy) I've learned the best learning paradigm for me is Project Oriented.
+And my project is to use detection and classification models to locate Trash.
+I really don't think I can clean up a lot myself, nor do I believe that this project will have a profound impact, but it's cool. And I like the idea.
+And a few people around me said they will help along if they can. So here I go.
 
-# Getting started
+Trying to build on the TACO Project (just for trash detection) would have been perfect, but a 5 year old project doesn't live up to it.
+At first the idea of running a Masked RCNN model would have been the dream, but now YOLO is the state-of-the-art (SOTA) architecture 
+and the python packages needed to run the Matterport implementation for the MRCNN are from 2017 are not easily available.
+Soooo - 
+1. I took the images from the TACO dataset
+2. Translated the coco annotations to yolo
+3. Trained the model
+4. Rinsed and repeated
 
-### Requirements 
+To say the least this was and is excruciating and horrible, and I don't even have a GPU on my laptop. So to train YOLOv8n with 60 classes in 1500 images (Total, not each),
+Would take me ~60 Hours each time. 
+Well I guess now is the time to move on to cloud computing, and I'll go with the easy choice for now - Google Colab.
 
-To install the required python packages simply type
-```
-pip3 install -r requirements.txt
-```
-Additionaly, to use ``demo.pynb``, you will also need [coco python api](https://github.com/cocodataset/cocoapi). You can get this using
-```
-pip3 install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
-```
+## State-of-the-Mess
+This is basically my TO-DO List:
+1. Join all the helper functions into a Utils package.
+2. Write a clear roadmap on how to use all of this (begining to working model).
+3. Move the data to Google Colab.
+4. Train the weights on the "cloud".
+5. Download weights and make sure they infer correctly on test images.
+6. Move on to the next phase - Detecting & Classifying trash in videos.
+7. Move on to the next piece of this total project - Analizing drone videos and mapping trash unto a map.
 
-### Download
-
-To download the dataset images simply issue
-```
-python3 download.py
-```
-Alternatively, download from [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3587843.svg)](https://doi.org/10.5281/zenodo.3587843)
-
-Our API contains a jupyter notebook ``demo.pynb`` to inspect the dataset and visualize annotations.
-
-**Unlabeled data**
-
-A list of URLs for both unlabeled and labeled images is now also provided in `data/all_image_urls.csv`.
-Each image contains one URL for each original image (second column) and one URL for a VGA-resized version (first column)
-for images hosted by Flickr. If you decide to annotate these images using other tools, please make them public and contact us so we can keep track.
-
-**Unofficial data**
-
-Annotations submitted via our website are added weekly to `data/annotations_unofficial.json`. These have not yet been been reviewed by us -- some may be inaccurate or have poor segmentations. 
-You can use the same command to download the respective images:
-```
-python3 download.py --dataset_path ./data/annotations_unofficial.json
-```
-
-### Trash Detection
-
-The implementation of [Mask R-CNN by Matterport](https://github.com/matterport/Mask_RCNN)  is included in ``/detector``
-with a few modifications. Requirements are the same. Before using this, the dataset needs to be split. You can either donwload our [weights and splits](https://github.com/pedropro/TACO/releases/tag/1.0) or generate these from scratch using the `split_dataset.py` script to generate 
-N random train, val, test subsets. For example, run this inside the directory `detector`:
-```
-python3 split_dataset.py --dataset_dir ../data
-```
-
-For further usage instructions, check ``detector/detector.py``.
-
-As you can see [here](http://tacodataset.org/stats), most of the original classes of TACO have very few annotations, therefore these must be either left out or merged together. Depending on the problem, ``detector/taco_config`` contains several class maps to target classes, which maintain the most dominant classes, e.g., Can, Bottles and Plastic bags. Feel free to make your own classes.
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/wiki/pedropro/TACO/images/teaser.gif" width="75%"/></p>
 "# Trash-Detection" 
