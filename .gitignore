@@ -1,0 +1,14 @@
+/.vscode
+/1-s2.0-S258972172400028X-main.pdf
+/data
+/README.md
+/results.json
+/runs
+/TACO-master.zip
+/test.txt
+/train.txt
+/training_log.txt
+/validate.txt
+/yolov8n.pt
+/yolov8x-cls.pt
+/__pycache__
